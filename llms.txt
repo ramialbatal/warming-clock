@@ -1,0 +1,26 @@
+# Warming Clock
+
+> A live, browser-based clock of how much hotter the world is than before industry, from the latest official
+> temperatures, next to the Paris Agreement limits of 1.5°C and 2°C, with a countdown and figures for 26 countries.
+> URL: https://ramialbatal.github.io/warming-clock/
+
+## What it shows
+- World warming above pre-industrial times (1850-1900): the average of the last 12 months, on a thermometer marked at 1.5°C and 2°C.
+- A plain-language answer: how close is the world to the 1.5°C limit?
+- A live countdown to when long-term warming (the 30-year trend) passes the next Paris limit, at today's pace.
+- Where we stand: how far along the way to 1.5°C and to 2°C long-term warming is, and how many of the 10 hottest years were among the last 10.
+- The heat where you live: United States, China, India, Brazil, Nigeria, Russia, Japan, Germany, United Kingdom, France, Italy, Spain, Saudi Arabia, Egypt, Morocco, Türkiye, Iran, Pakistan, Bangladesh, Indonesia, Mexico, Canada, Australia, South Africa, Argentina, Kenya. For each: the latest complete year against its own 1991-2020 normal, its hottest year and history since 1960.
+- Why half a degree matters: the difference between 1.5°C and 2°C for heatwaves and coral reefs (IPCC SR1.5).
+- "What can I do?": three sourced actions.
+- Languages: English, French (?lang=fr), Spanish (?lang=es) and Arabic (?lang=ar).
+- An embeddable widget for other websites: https://ramialbatal.github.io/warming-clock/?embed=1 (add &lang=fr, es or ar).
+
+## Data sources (fetched live from Our World in Data)
+- Temperatures: Copernicus Climate Change Service, ERA5 reanalysis, monthly (world) and yearly (countries), as differences from 1991-2020. https://climate.copernicus.eu/
+- Pre-industrial offset: 0.88°C, as used by Copernicus. https://climate.copernicus.eu/climate-bulletin-about-data-and-analysis
+
+## Method
+Recent warming: the last 12 months' average plus 0.88°C. Long-term warming: a least-squares line through the last 30 complete years, read today. The countdown assumes warming keeps its current pace; it is an estimate, not a forecast.
+
+## Source code
+https://github.com/ramialbatal/warming-clock

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Warming Clock: How Much Hotter the World Is, Live, and the Paris Limits</title>
+  <meta name="description" data-i18n-attr="content:meta.description" content="How much hotter is the world than before industry? The latest global temperature from Copernicus, against the Paris limits of 1.5°C and 2°C, with a live countdown and every country.">
+  <meta name="keywords" content="global warming, climate change, global temperature, 1.5 degrees, Paris Agreement, temperature anomaly, Copernicus, heatwaves, warming clock">
+  <!-- Languages: English at the plain address, the others with ?lang=. The script below picks the language before
+       the first paint (?lang=, then the visitor's last choice, then the browser), sets <html lang dir>, points the
+       canonical address at that language, and hides the page until the translation is in (clock-core translatePage). -->
+  <link rel="canonical" href="https://ramialbatal.github.io/warming-clock/">
+  <link rel="alternate" hreflang="en" href="https://ramialbatal.github.io/warming-clock/">
+  <link rel="alternate" hreflang="fr" href="https://ramialbatal.github.io/warming-clock/?lang=fr">
+  <link rel="alternate" hreflang="es" href="https://ramialbatal.github.io/warming-clock/?lang=es">
+  <link rel="alternate" hreflang="ar" href="https://ramialbatal.github.io/warming-clock/?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://ramialbatal.github.io/warming-clock/">
+  <script>
+    (function () {
+      var ok = ["en", "fr", "es", "ar"], q = new URLSearchParams(location.search), saved = null, h = document.documentElement;
+      try { saved = localStorage.getItem("clock-lang"); } catch (e) {}
+      var browser = (navigator.languages || [navigator.language || ""]).map(function (x) { return String(x).slice(0, 2).toLowerCase(); });
+      var l = [q.get("lang"), saved].concat(browser).filter(function (x) { return ok.indexOf(x) >= 0; })[0] || "en";
+      h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr";
+      if (q.has("embed")) h.setAttribute("data-embed", "");
+      if (q.has("card")) h.setAttribute("data-card", "");   // the weekly link-preview picture (scripts/og-image.js)
+      if (l !== "en") {
+        h.setAttribute("data-i18n", "pending");
+        setTimeout(function () { h.removeAttribute("data-i18n"); }, 4000);   // never stay hidden
+        document.querySelector('link[rel="canonical"]').href = location.origin + location.pathname + "?lang=" + l;
+      }
+    })();
+  </script>
+  <!-- Visit counts: GoatCounter, no cookies, no personal data (clock-core startStats) -->
+  <meta name="clock-stats" content="https://ramialbatal.goatcounter.com/count">
+  <meta name="google-site-verification" content="3SuQ6XzVcD3pdgYeLcflAI5zGCyUTZUtEPxxrUPsIs4" />
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#140b07">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Warming Clock">
+  <meta property="og:title" content="Warming Clock: how much hotter the world is, live">
+  <meta property="og:description" content="The latest global temperature against the Paris limits of 1.5°C and 2°C, with a live countdown and every country.">
+  <meta property="og:url" content="https://ramialbatal.github.io/warming-clock/">
+  <meta property="og:image" content="https://ramialbatal.github.io/warming-clock/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Warming Clock showing how much hotter the world is than before industry">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Warming Clock: how much hotter the world is, live">
+  <meta name="twitter:description" content="The latest global temperature against the Paris limits of 1.5°C and 2°C, with a live countdown and every country.">
+  <meta name="twitter:image" content="https://ramialbatal.github.io/warming-clock/img/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Warming Clock",
+    "alternateName": "Live Global Warming Clock",
+    "url": "https://ramialbatal.github.io/warming-clock/",
+    "description": "How much hotter the world is than before industry, from the latest Copernicus temperature data, against the Paris Agreement limits of 1.5°C and 2°C, with a live countdown at today's pace of warming and figures for major countries.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any (web browser)",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "inLanguage": ["en", "fr", "es", "ar"],
+    "keywords": "global warming, climate change, global temperature, Paris Agreement, 1.5 degrees",
+    "about": [
+      { "@type": "Thing", "name": "Global warming" },
+      { "@type": "Thing", "name": "Climate change" },
+      { "@type": "Thing", "name": "Paris Agreement" }
+    ],
+    "isBasedOn": [
+      { "@type": "Dataset", "name": "ERA5 surface air temperature (Copernicus Climate Change Service)", "description": "Monthly and yearly surface air temperature for the world and every country, as differences from the 1991-2020 average.", "creator": { "@type": "Organization", "name": "Copernicus Climate Change Service (ECMWF)" }, "url": "https://climate.copernicus.eu/", "isAccessibleForFree": true }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ramialbatal/clock-core@dfec615ab765b96a94e7886f6082d8ee0bb60de1/clock-core.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <!-- clock-core is pinned to an exact commit; to upgrade, change it here, in the CSS link above and in package.json -->
+  <script type="importmap">{ "imports": { "clock-core": "https://cdn.jsdelivr.net/gh/ramialbatal/clock-core@dfec615ab765b96a94e7886f6082d8ee0bb60de1/clock-core.js" } }</script>
+  <!-- If the page code can't load (CDN down, very old browser), show the error box instead of a spinner forever -->
+  <script>
+    function clockLoadFailed() {
+      var show = function () {
+        document.body.dataset.state = "error";
+        var m = document.getElementById("error-msg");
+        if (m) m.textContent = "The page code could not load. Please check your connection, update your browser, or try again later.";
+        var r = document.getElementById("retry");
+        if (r) r.onclick = function () { location.reload(); };
+      };
+      document.documentElement.removeAttribute("data-i18n");
+      if (document.body) show(); else document.addEventListener("DOMContentLoaded", show);
+    }
+  </script>
+  <script nomodule>clockLoadFailed();</script>
+  <script type="module" src="js/app.js" onerror="clockLoadFailed()"></script>
+</head>
+<body class="has-scene" data-state="loading">
+  <canvas class="scene" aria-hidden="true"></canvas>
+  <header class="top">
+    <div class="wrap">
+      <h1 data-i18n="h.title">Warming Clock</h1>
+      <p class="sub" data-i18n="h.sub">How much hotter the world is, and how close we are to the Paris limits</p>
+      <div class="gas-bar">
+        <button type="button" class="help-btn" data-open-help aria-haspopup="dialog">
+          <span aria-hidden="true">?</span><span class="sr-only" data-i18n="h.help">Why does a degree and a half matter?</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <noscript>
+    <div class="status">
+      <p><strong>This live clock needs JavaScript.</strong></p>
+      <p class="hint">It shows how much hotter the world is than before industry, from Copernicus temperature data,
+        against the Paris Agreement limits of 1.5°C and 2°C, with figures for major countries.</p>
+    </div>
+  </noscript>
+
+  <div class="status loading-only" role="status">
+    <div class="spinner" aria-hidden="true"></div>
+    <p data-i18n="st.loading">Getting the latest official data…</p>
+    <p class="hint" data-i18n="st.via">Copernicus, via Our World in Data</p>
+  </div>
+
+  <div class="status error-only" role="alert">
+    <p><strong data-i18n="st.error">Couldn't load the data.</strong></p>
+    <p class="hint" id="error-msg"></p>
+    <button id="retry" type="button" data-i18n="st.retry">Try again</button>
+  </div>
+
+  <main class="wrap ready-only">
+    <!-- 1. The answer, in one line -->
+    <section class="answer" id="answer" data-tone="bad" aria-live="polite">
+      <p class="answer-icon" id="answer-icon" aria-hidden="true"></p>
+      <h2 class="answer-title" id="answer-title"></h2>
+      <p class="answer-text" id="answer-text"></p>
+    </section>
+
+    <!-- 2. How hot, on a thermometer, and the countdown -->
+    <section class="hero" aria-label="World temperature" data-i18n-attr="aria-label:hero.aria">
+      <p class="label" data-i18n="hero.label">How much hotter the world is than before industry</p>
+      <div class="big" id="world-temp">0</div>
+      <p class="unit" id="world-span"></p>
+      <div class="thermo" aria-hidden="true">
+        <i id="thermo-fill"></i>
+        <span class="mark m15" id="mark-15"><b>1.5°C</b></span>
+        <span class="mark m20" id="mark-20"><b>2°C</b></span>
+      </div>
+      <div class="countdown">
+        <p class="count-label" id="count-label"></p>
+        <p class="count" id="count">0</p>
+      </div>
+      <details class="more-info">
+        <summary data-i18n="hero.more">More about these numbers</summary>
+        <p data-i18n="hero.detail">The latest month is <span data-latest></span>. Over the last 12 months the world averaged <b id="d-recent"></b>
+          above pre-industrial times (1850 to 1900), against <b id="d-prev"></b> the 12 months before. The long-term level,
+          the trend through the last 30 years, is <b id="d-level"></b>, rising by about <b id="d-rate"></b> every ten years.</p>
+      </details>
+    </section>
+
+    <!-- 3. Where we stand: three traffic lights -->
+    <section class="standing" aria-labelledby="standing-title">
+      <h2 id="standing-title" data-i18n="st.title">Where we stand</h2>
+      <div class="status-grid" id="status-cards"></div>
+      <details class="more-info">
+        <summary data-i18n="st.more">What do these mean?</summary>
+        <p data-i18n="st.paris">In the <b>Paris Agreement</b>, countries agreed to keep warming well below 2°C and to try to stop
+          at 1.5°C. These limits are about the long-term average, over about 20 years, not a single hot year. The bars show
+          how close today's long-term warming is to each limit.</p>
+        <p class="src" data-i18n="st.src">Temperatures: Copernicus Climate Change Service (ERA5). Pre-industrial level: the 1991-2020
+          average plus 0.88°C, as Copernicus does (<a data-offset-source href="https://climate.copernicus.eu/" rel="noopener"></a>).</p>
+      </details>
+    </section>
+
+    <!-- 4. Countries -->
+    <section aria-labelledby="countries-title">
+      <div class="bar-head">
+        <h2 id="countries-title" data-i18n="c.title">How hot it was where you live</h2>
+        <label><span data-i18n="c.sort">Sort by</span>
+          <select id="sort">
+            <option value="hot" data-i18n="c.sort.hot">Hottest compared with normal</option>
+            <option value="name" data-i18n="c.sort.name">Name</option>
+          </select>
+        </label>
+      </div>
+      <p class="legend" data-i18n="c.legend"><span class="badge bad">▲ Hotter than normal</span> compared with the 1991-2020 average, already warmer than the past</p>
+      <div class="grid collapsed" id="grid"></div>
+      <p class="show-all-row"><button type="button" class="show-all" id="show-all" hidden>Show all countries</button></p>
+    </section>
+
+    <!-- 5. All the detail, for those who want it -->
+    <details class="method">
+      <summary><h2 data-i18n="m.title">How we calculate this</h2></summary>
+      <p data-i18n="m.p1">Copernicus measures the temperature of the air near the ground everywhere on Earth, every month, and compares
+        it with the 1991-2020 average. That average was already 0.88°C warmer than before industry (1850 to 1900), so we add
+        0.88°C to show warming since pre-industrial times, as Copernicus does. Only 12-month and yearly averages are shown
+        this way, because single months use slightly different offsets.</p>
+      <pre data-i18n="m.formula">recent   = average of the last 12 months + 0.88 °C
+long-term = straight line through the last 30 years, read today
+countdown = (1.5 °C - long-term) ÷ warming per year</pre>
+      <p data-i18n="m.p2">The long-term level smooths out natural ups and downs, such as El Niño years, the way the Paris limits are
+        meant. The countdown assumes warming keeps today's pace; it would slow if the world cut emissions fast. Countries
+        are compared with their own 1991-2020 normal, for the latest complete year.</p>
+      <p><button type="button" class="link-btn" data-open-help aria-haspopup="dialog" data-i18n="m.help">Why does a degree and a half matter? →</button></p>
+      <p class="src" data-i18n="m.src">Data: Copernicus Climate Change Service (ERA5), fetched live from
+        <a href="https://ourworldindata.org/grapher/monthly-temperature-anomalies" rel="noopener">Our World in Data</a> at <span id="fetched-at"></span>.</p>
+    </details>
+  </main>
+
+  <dialog id="help" aria-labelledby="help-title">
+    <header class="sheet-head">
+      <h2 id="help-title" data-i18n="help.title">Why a degree and a half matters</h2>
+      <button type="button" class="close" data-close-help aria-label="Close" data-i18n-attr="aria-label:core.close.button">×</button>
+    </header>
+    <div class="sheet">
+      <p class="analogy" data-i18n="help.fever">🤒 Think of a <b>fever</b>. Your body is healthy at about 37°C. Just 1.5°C more and you
+        feel ill; 2°C more and you need a doctor. The planet is similar: a small rise in the average means many more
+        heatwaves, droughts, floods and fires.</p>
+      <h3 data-i18n="help.why.h">What changes between 1.5°C and 2°C</h3>
+      <div class="compare">
+        <p class="cmp-q" data-i18n="cmp.heat">People facing severe heatwaves at least every five years</p>
+        <div class="cmp-row c15"><span>1.5°C</span><div class="cmp-bar"><i style="width:38%"></i></div><b data-i18n="cmp.heat15">14% of people</b></div>
+        <div class="cmp-row c20"><span>2°C</span><div class="cmp-bar"><i style="width:100%"></i></div><b data-i18n="cmp.heat20">37% of people</b></div>
+        <p class="cmp-q" data-i18n="cmp.coral">Coral reefs lost</p>
+        <div class="cmp-row c15"><span>1.5°C</span><div class="cmp-bar"><i style="width:80%"></i></div><b data-i18n="cmp.coral15">70 to 90%</b></div>
+        <div class="cmp-row c20"><span>2°C</span><div class="cmp-bar"><i style="width:100%"></i></div><b data-i18n="cmp.coral20">over 99%</b></div>
+        <p class="cmp-note" data-i18n="cmp.note">Source: IPCC Special Report on Global Warming of 1.5°C (2018).</p>
+      </div>
+      <h3 data-i18n="help.cause.h">What causes it</h3>
+      <p data-i18n="help.cause.p">Burning coal, oil and gas releases carbon dioxide and other gases that trap heat, like a blanket
+        around the Earth. Warming stops only when the world's CO₂ emissions reach net zero. The
+        <a href="https://ramialbatal.github.io/emissions-clock/">Emissions Clock</a> shows them live.</p>
+      <button type="button" class="done" data-close-help data-i18n="help.done">Got it</button>
+    </div>
+  </dialog>
+
+  <footer class="wrap foot">
+    <p data-i18n="f.about"><strong>Warming Clock</strong> shows how much hotter the world and its countries are than before industry,
+      from the latest official temperature data, against the limits the world agreed in Paris.</p>
+    <p data-i18n="f.related">See also the <a href="https://ramialbatal.github.io/emissions-clock/">Emissions Clock</a>,
+      the <a href="https://ramialbatal.github.io/renewables-clock/">Renewables Clock</a>, the
+      <a href="https://ramialbatal.github.io/jobs-clock/">Jobs Clock</a> and the
+      <a href="https://ramialbatal.github.io/peace-clock/">Peace Clock</a> · part of <a href="https://ramialbatal.github.io/">AI for things that matter</a></p>
+    <p data-i18n="f.links">Estimates only · data is pulled fresh on every visit ·
+      <a href="https://github.com/ramialbatal/warming-clock" rel="noopener">Source code</a></p>
+  </footer>
+
+</body>
+</html>

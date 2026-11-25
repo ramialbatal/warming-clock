@@ -1,0 +1,37 @@
+/* Warming Clock: colours and page-specific styles (loaded after clock-core.css) */
+:root { --accent: #ff5a36; --accent-2: #ffb38a; --tint: #2b1408; --glow: rgba(255,90,54,.35); --on-accent: #1c0803; }
+
+/* The thermometer: from 0 to 2.5°C, filled to the last 12 months, with the two Paris limits marked */
+.thermo { position: relative; height: 18px; max-width: 640px; margin: 14px auto 30px; background: var(--line); border-radius: 9px; }
+.thermo > i { display: block; height: 100%; border-radius: 9px; background: linear-gradient(90deg, #ffd166, #ff8a3d 55%, #ff3b3b); box-shadow: 0 0 16px rgba(255,90,54,.45); }
+.thermo .mark { position: absolute; top: -6px; bottom: -6px; width: 3px; margin-inline-start: -1.5px; background: var(--text); border-radius: 2px; }
+.thermo .mark b { position: absolute; top: 100%; inset-inline-start: 50%; transform: translateX(-50%); margin-top: 4px; font: 600 .78rem var(--mono); color: var(--muted); white-space: nowrap; }
+[dir="rtl"] .thermo .mark b { transform: translateX(50%); }
+.thermo .m20 { background: #ff3b3b; }
+
+/* The countdown to the next Paris limit */
+.countdown { margin: 6px auto 0; padding-top: 12px; border-top: 1px solid var(--line); max-width: 640px; }
+.count-label { margin: 0; color: var(--muted); font-size: .92rem; }
+.count { margin: 6px 0 0; font: 700 clamp(1.3rem, 4.6vw, 2.2rem) var(--mono); color: var(--accent-2); font-variant-numeric: tabular-nums; unicode-bidi: isolate; }
+.count .seg { unicode-bidi: isolate; white-space: nowrap; }
+.count .d { display: inline-block; min-width: .62em; }
+
+/* Fever-style comparison in the explainer */
+.cmp-row { grid-template-columns: 52px 1fr 110px; }
+.cmp-row.c15 i { background: #ff8a3d; }
+.cmp-row.c20 i { background: #ff3b3b; }
+
+/* The widget (?embed=1): the answer, the temperature, the thermometer and the countdown, in a 300px frame */
+html[data-embed] .hero .label, html[data-embed] #world-span { display: none; }
+html[data-embed] .big { margin-top: 0; }
+html[data-embed] .thermo { margin: 6px auto 20px; height: 10px; }
+html[data-embed] .thermo .mark b { font-size: .68rem; margin-top: 2px; }
+html[data-embed] .countdown { margin-top: 0; padding-top: 4px; border-top: 0; }
+html[data-embed] .count-label { font-size: .72rem; line-height: 1.3; }
+html[data-embed] .count { font-size: 1.05rem; margin-top: 2px; }
+html[data-embed] .answer-title { font-size: 1rem; }
+html[data-embed] .hero { padding: 6px 10px 8px; }
+html[data-embed] .answer { padding-top: 8px; padding-bottom: 8px; }
+html[data-embed] .top { padding-top: 8px; }
+html[data-embed] .thermo { margin-bottom: 16px; }
+html[data-embed] .embed-credit { margin-top: 4px; }

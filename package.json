@@ -1,0 +1,39 @@
+{
+  "name": "warming-clock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live clock of how much hotter the world is than before industry, against the Paris limits, with a countdown and every country.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Rami Albatal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ramialbatal/warming-clock.git"
+  },
+  "homepage": "https://ramialbatal.github.io/warming-clock/",
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc -p jsconfig.json",
+    "style": "node scripts/check-style.js",
+    "smoke": "node scripts/smoke.js",
+    "check": "npm run style && npm run typecheck && npm test",
+    "serve": "python3 -m http.server 8000",
+    "og-image": "node scripts/og-image.js"
+  },
+  "devDependencies": {
+    "clock-core": "github:ramialbatal/clock-core#dfec615ab765b96a94e7886f6082d8ee0bb60de1",
+    "playwright": "1.48.2",
+    "typescript": "5.6.3"
+  },
+  "smoke": {
+    "ticking": [
+      "#count"
+    ],
+    "verdicts": [
+      "#answer-title"
+    ]
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,26 @@
+name: Checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 6 * * 1"   # every Monday: catches data sources that changed or went away
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Style (no em or en dashes)
+        run: npm run style
+      - name: Types (JSDoc + TypeScript checker)
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Smoke test (real data, desktop and phone)
+        run: npm run smoke
