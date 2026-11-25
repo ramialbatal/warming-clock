@@ -77,10 +77,12 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ramialbatal/clock-core@dfec615ab765b96a94e7886f6082d8ee0bb60de1/clock-core.css">
+  <!-- Open the connection to the data source early: the numbers come from there -->
+  <link rel="preconnect" href="https://ourworldindata.org" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ramialbatal/clock-core@10b93b009608fa8a97369f04c34776c7ddfd5984/clock-core.css">
   <link rel="stylesheet" href="css/theme.css">
   <!-- clock-core is pinned to an exact commit; to upgrade, change it here, in the CSS link above and in package.json -->
-  <script type="importmap">{ "imports": { "clock-core": "https://cdn.jsdelivr.net/gh/ramialbatal/clock-core@dfec615ab765b96a94e7886f6082d8ee0bb60de1/clock-core.js" } }</script>
+  <script type="importmap">{ "imports": { "clock-core": "https://cdn.jsdelivr.net/gh/ramialbatal/clock-core@10b93b009608fa8a97369f04c34776c7ddfd5984/clock-core.js" } }</script>
   <!-- If the page code can't load (CDN down, very old browser), show the error box instead of a spinner forever -->
   <script>
     function clockLoadFailed() {
@@ -199,7 +201,7 @@
         it with the 1991-2020 average. That average was already 0.88°C warmer than before industry (1850 to 1900), so we add
         0.88°C to show warming since pre-industrial times, as Copernicus does. Only 12-month and yearly averages are shown
         this way, because single months use slightly different offsets.</p>
-      <pre data-i18n="m.formula">recent   = average of the last 12 months + 0.88 °C
+      <pre tabindex="0" data-i18n="m.formula">recent   = average of the last 12 months + 0.88 °C
 long-term = straight line through the last 30 years, read today
 countdown = (1.5 °C - long-term) ÷ warming per year</pre>
       <p data-i18n="m.p2">The long-term level smooths out natural ups and downs, such as El Niño years, the way the Paris limits are
