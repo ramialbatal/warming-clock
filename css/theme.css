@@ -35,3 +35,8 @@ html[data-embed] .answer { padding-top: 8px; padding-bottom: 8px; }
 html[data-embed] .top { padding-top: 8px; }
 html[data-embed] .thermo { margin-bottom: 16px; }
 html[data-embed] .embed-credit { margin-top: 4px; }
+
+/* "Plus chaud que la normale" is long: on a narrow phone the badge drops below the country's name instead of making
+   the page scroll sideways (the smoke test caught 1 to 17 px with the fonts on Linux) */
+.card header { flex-wrap: wrap; row-gap: 6px; }
+.legend .badge { white-space: normal; }
